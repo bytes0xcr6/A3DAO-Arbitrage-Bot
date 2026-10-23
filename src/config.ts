@@ -1,3 +1,4 @@
+import { loadPrivateKey } from '../security/foundry-keystore.js';
 import { ethers } from "ethers";
 import { UnisWapV3Pool_ABI } from "./ABIs/UnisWapV3PoolABI";
 import { UniswapV3Router_ABI } from "./ABIs/UniswapV3RouterABI";
@@ -19,7 +20,7 @@ export const EURO3_ADDRESS = process.env.EURO3_ADDRESS!;
 export const UNISWAPV3_ROUTER_ADDRESS = process.env.UNISWAPV3_ROUTER_ADDRESS!;
 
 // Private key signer
-export const SIGNER_PRIVATE_KEY = process.env.SIGNER_PRIVATE_KEY!;
+export const SIGNER_PRIVATE_KEY = loadPrivateKey('SIGNER_PRIVATE_KEY')!;
 
 export const Provider = new ethers.JsonRpcProvider(RPC_NODE);
 export const Signer = new ethers.Wallet(SIGNER_PRIVATE_KEY, Provider);
